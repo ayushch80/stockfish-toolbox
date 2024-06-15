@@ -48,11 +48,11 @@ The CLI page provides an interface to execute arbitrary Stockfish commands. User
 
 ### Benchmark
 
-The Benchmark page (coming soon) will provide performance metrics for Stockfish running in the browser.
+The Benchmark page provides performance metrics for Stockfish running in the browser.
 
 ### Insights
 
-The Insights page (coming soon) will offer detailed analysis and insights into Stockfish's performance and behavior.
+The Insights page will offer detailed analysis and insights into Stockfish's performance and behavior.
 
 ## Features
 
@@ -60,7 +60,6 @@ The Insights page (coming soon) will offer detailed analysis and insights into S
 - **Search Depth**: Set the search depth for Stockfish's analysis.
 - **Thread Control**: Specify the number of threads to use for analysis.
 - **Command Execution**: Run custom Stockfish commands and view output in real-time.
-- **Error Handling**: Display errors if WebAssembly threads are not supported or other issues occur.
 
 ## Support
 

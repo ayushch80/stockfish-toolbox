@@ -1,0 +1,53 @@
+<div class="home">
+	<section class="section">
+		<div class="is-flex is-flex-direction-column is-align-content-center">
+
+			<div class="field">
+				<label class="label">Stockfish Version</label>
+				<div class="control">
+					<div class="select">
+						<select disabled>
+							<option>Stockfish NNUE 16</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="is-flex">
+
+				<div class="field px-1">
+					<label class="label">FEN</label>
+					<div class="control">
+						<input class="input fen-input" type="text" value="r3kbnr/pp1b1ppp/2Pp1q2/1B6/Q3P3/8/PPP2PPP/RNB1K2R b - - 0 1" placeholder="FEN">
+					</div>
+				</div>
+
+				<div class="field">
+					<label class="label">Depth</label>
+					<div class="control">
+						<input class="input depth-input" type="number" value="5" placeholder="Depth">
+					</div>
+				</div>
+
+				<div class="field">
+					<label class="label">Threads</label>
+					<div class="control">
+						<input class="input thread-input" type="number" value="1" placeholder="Threads">
+					</div>
+				</div>
+
+			</div>
+
+			<button class="button is-info next-move-button">NEXT MOVE !!</button>
+
+		</div>
+	</section>
+	<section class="section title is-4">
+		<p class="bestmove">Best Move: None</p>
+		<p class="pondermove">Ponder Move: None</p>
+	</section>
+	<div class="mx-5">
+		Generated in <p class="time-taken">0.00s</p>
+	</div>
+</div>
+<!-- <script type="module" src="../js/home.js"></script> -->

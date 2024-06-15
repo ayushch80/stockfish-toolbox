@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/logo.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stockfish Toolbox</title>
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> -->
+		<link rel="stylesheet" type="text/css" href="./css/bulma.css">
+		<script type="module" src="/js/navigo.min.js"></script>
+		<script type="module" src="/js/router.js"></script>
+	</head>
+	<body>
+		<div id="app" class="theme-dark">
+			<div class="">
+				<center><h1 class="title is-2 box">Stockfish Toolbox</h1></center>
+			</div>
+			<div class="error" style="position: absolute;width: 100%;z-index: 4;"></div>
+			<section class="section">
+				<div class="box is-flex is-flex-wrap-nowrap">
+					<a class="button mr-auto" href="/"> Home </a>
+					<a class="button mr-auto" href="/cli"> CLI </a>
+					<a class="button mr-auto" href="/benchmark"> Benchmark </a>
+					<a class="button mr-auto" href="/insights"> Insights </a>
+				</div>
+			</section>
+			<div id="root">
+			</div>
+
+		</div>
+		<script src="/stockfish/stockfish.js"></script>
+		<script type="text/javascript">
+			var index = 0
+			function removeAllError () {
+				document.querySelector(".error").innerHTML = ""
+			}
+			function removeErrorByClass (className) {
+				document.querySelector(className).remove()
+			}
+			function addNewError (message) {
+				document.querySelector(".error").innerHTML = `	<div class="notification is-danger m-4 error-${index}">
+																	<button class="delete" onclick="removeErrorByClass('.error-${index}')"></button>
+																	[${index+1}] ${message}
+																</div>` + document.querySelector(".error").innerHTML
+
+				index++
+			}
+		</script>
+		<script type="text/javascript">
+			function wasmThreadsSupported() {
+				// WebAssembly 1.0
+				const source = Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00);
+				if (
+					typeof WebAssembly !== "object" ||
+					typeof WebAssembly.validate !== "function"
+				)
+					return false;
+				if (!WebAssembly.validate(source)) return false;
+
+				// SharedArrayBuffer
+				if (typeof SharedArrayBuffer !== "function") return false;
+
+				// Atomics
+				if (typeof Atomics !== "object") return false;
+
+				// Shared memory
+				const mem = new WebAssembly.Memory({ shared: true, initial: 8, maximum: 16 });
+				if (!(mem.buffer instanceof SharedArrayBuffer)) return false;
+
+				// Structured cloning
+				try {
+					// You have to make sure nobody cares about these messages!
+					window.postMessage(mem, "*");
+				} catch (e) {
+					return false;
+				}
+
+				// Growable shared memory (optional)
+				try {
+					mem.grow(8);
+				} catch (e) {
+					return false;
+				}
+
+				return true;
+			}
+
+			console.log("wasmThreadsSupported",wasmThreadsSupported())
+		</script>
+		<script type="text/javascript">
+			
+		</script>
+		<script type="module" src="/js/main.js"></script>
+	</body>
+</html>
